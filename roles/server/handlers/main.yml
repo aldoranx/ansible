@@ -1,6 +1,5 @@
 ---
 - name: restart apache
-  become: yese
   service:
      name: httpd
      state: restarted
