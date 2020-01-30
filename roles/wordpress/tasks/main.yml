@@ -1,7 +1,25 @@
 ---
+- name: Create directory to download WordPress
+  become: yes
+  command: mkdir -p /tmp/wordpress
+
 - name: Download WordPress
+  become: yes
   get_url: url=http://wordpress.org/wordpress-latest.tar.gz dest=/var/www/html/wordpress.tar.gz
-  force=yes
+force=yes
 
 - name: Extract WordPress
+  become: yes
   command: "tar xzf /var/www/html/wordpress.tar.gz -C /var/www/html --strip-components 1"
+
+- name: Remove Wordpress
+  become: yes
+  command: "rm -rf wordpress"
+
+- name: Remove Wordpress gz
+  become: yes
+  command: "rm -rf wordpress-5.1.1.tar.gz"
+
+- name: Change wp-content perm
+  become: yes
+  command: "chmod -R 755 wp-content"
