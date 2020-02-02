@@ -1,25 +1,19 @@
 ---
-- name: Create directory to download WordPress
-  become: yes
-  command: mkdir -p /tmp/wordpress
-
 - name: Download WordPress
-  become: yes
-  get_url: url=http://wordpress.org/wordpress-latest.tar.gz dest=/var/www/html/wordpress.tar.gz
-force=yes
+  get_url:
+    url=https://wordpress.org/latest.tar.gz
+    dest=/tmp/wordpress.tar.gz
+    validate_certs=no
 
 - name: Extract WordPress
+  unarchive: src=/tmp/wordpress.tar.gz dest=/var/www/ copy=no
   become: yes
-  command: "tar xzf /var/www/html/wordpress.tar.gz -C /var/www/html --strip-components 1"
 
-- name: Remove Wordpress
+- name: Update default Apache site
   become: yes
-  command: "rm -rf wordpress"
-
-- name: Remove Wordpress gz
-  become: yes
-  command: "rm -rf wordpress-5.1.1.tar.gz"
-
-- name: Change wp-content perm
-  become: yes
-  command: "chmod -R 755 wp-content"
+  lineinfile:
+    dest=/etc/apache2/sites-enabled/000-default.conf
+    regexp="(.)+DocumentRoot /var/www/html"
+    line="DocumentRoot /var/www/wordpress"
+  notify:
+    - restart apache2

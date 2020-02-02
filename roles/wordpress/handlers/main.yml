@@ -1,6 +1,5 @@
 ---
 - name: restart apache
-  become: yese
-  service:
-     name: httpd
+  service: name=apache2 state=restarted
+  become: yes
      state: restarted
