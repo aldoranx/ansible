@@ -16,4 +16,21 @@
     regexp="(.)+DocumentRoot /var/www/html"
     line="DocumentRoot /var/www/wordpress"
   notify:
-    - restart apache2
+    - restart apache
+
+- name: Copy sample config file
+  command: mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php creates=/var/www/wordpress/wp-config.php
+  become: yes
+
+- name: Update WordPress config file
+  lineinfile:
+    dest=/var/www/wordpress/wp-config.php
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+  with_items:
+    - {'regexp': "define\\('DB_NAME', '(.)+'\\);", 'line': "define('DB_NAME', '{{db_name}}');"}
+
+    - {'regexp': "define\\('DB_USER', '(.)+'\\);", 'line': "define('DB_USER', '{{db_user}}');"}
+    - {'regexp': "define\\('DB_ENDPOINT', '(.)+'\\);", 'line': "define('DB_ENDPOINT', '{{db_endpoint}}');"}
+    - {'regexp': "define\\('DB_PASSWORD', '(.)+'\\);", 'line': "define('DB_PASSWORD', '{{db_password}}');"}
+  become: yes
