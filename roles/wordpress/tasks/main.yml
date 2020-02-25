@@ -22,10 +22,6 @@
   notify:
     - restart apache
 
-- name: Copy sample config file
-  command: mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php creates=/var/www/wordpress/wp-config.php
-  become: yes
-
 - name: Configure wordpress
   include_tasks: config.yml
   tags: wordpress
