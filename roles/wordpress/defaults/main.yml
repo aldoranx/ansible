@@ -1,4 +1,6 @@
-wordpress_database: mydb
-wordpress_user: aldo
-wordpress_password: password01*
-wordpress_endpoint: terraform-20200220180648548700000003.cc0togxxyb65.eu-west-3.rds.amazonaws.com
+DB_NAME: "{{ wordpress_database }}"
+DB_USER: "{{ wordpress_user }}"
+DB_PASSWORD: "{{ wordpress_password }}"
+DB_HOST: "{{ wordpress_endpoint }}"
+WP_HOME: "https://{{ cloudfront_url }}"
+WP_SITEURL: "https://{{ cloudfront_url }}"
