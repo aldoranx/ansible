@@ -17,3 +17,7 @@ Ansibles Roles
 - https://github.com/aldoranx/ansible/tree/master/roles/server
 
 - https://github.com/aldoranx/ansible/tree/master/roles/wordpress
+
+Ansible Playbook
+
+- https://github.com/aldoranx/ansible/blob/master/playbook.yml
