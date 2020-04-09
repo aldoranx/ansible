@@ -10,5 +10,10 @@ Ansible architecture
 
 - https://docs.ansible.com/ansible/latest/dev_guide/overview_architecture.html
 
-- 
+Ansibles Roles
 
+- https://github.com/aldoranx/ansible/tree/master/roles/php
+
+- https://github.com/aldoranx/ansible/tree/master/roles/server
+
+- https://github.com/aldoranx/ansible/tree/master/roles/wordpress
