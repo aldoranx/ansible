@@ -4,3 +4,6 @@ DB_PASSWORD: "{{ wordpress_password }}"
 DB_HOST: "{{ wordpress_endpoint }}"
 WP_HOME: "https://{{ cloudfront_url }}"
 WP_SITEURL: "https://{{ cloudfront_url }}"
+
+
+

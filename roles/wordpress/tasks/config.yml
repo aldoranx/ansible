@@ -1,10 +1,11 @@
 ---
 - name: Wordpress config file
+  become: yes
   template:
     src: wp-config.php.j2
     dest: /var/www/wordpress/wp-config.php
     owner: root
-    group: apache
+    group: www-data
     mode: '0640'
     setype: etc_t
   notify: restart apache2
