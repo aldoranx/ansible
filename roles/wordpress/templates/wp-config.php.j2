@@ -1,4 +1,15 @@
-<?php	
+<?php
+//Begin SSL Load balancing fix
+if ((isset($_ENV["HTTPS"]) && ("on" == $_ENV["HTTPS"]))
+|| (isset($_SERVER["HTTP_X_FORWARDED_SSL"]) && (strpos($_SERVER["HTTP_X_FORWARDED_SSL"], "1") !== false))
+|| (isset($_SERVER["HTTP_X_FORWARDED_SSL"]) && (strpos($_SERVER["HTTP_X_FORWARDED_SSL"], "on") !== false))
+|| (isset($_SERVER["HTTP_CF_VISITOR"]) && (strpos($_SERVER["HTTP_CF_VISITOR"], "https") !== false))
+|| (isset($_SERVER["HTTP_CLOUDFRONT_FORWARDED_PROTO"]) && (strpos($_SERVER["HTTP_CLOUDFRONT_FORWARDED_PROTO"], "https") !== false))
+|| (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && (strpos($_SERVER["HTTP_X_FORWARDED_PROTO"], "https") !== false))
+|| (isset($_SERVER["HTTP_X_PROTO"]) && (strpos($_SERVER["HTTP_X_PROTO"], "SSL") !== false))
+) {
+$_SERVER["HTTPS"] = "on";
+}	
 /**	
  * The base configuration for WordPress	
  *	
@@ -31,8 +42,11 @@ define('DB_PASSWORD', '{{ wordpress_password }}');
 define('DB_HOST', '{{ wordpress_endpoint }}');
 
 /** cloudfront_url */
-define('WP_HOME','http://{{ cloudfront_url }}');
-define('WP_SITEURL','http://{{ cloudfront_url }}');
+define('WP_HOME','https://{{ cloudfront_url }}');
+define('WP_SITEURL','https://{{ cloudfront_url }}');
+
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+   $_SERVER['HTTPS']='on';
 
 /** Database Charset to use in creating database tables. */	
 define( 'DB_CHARSET', 'utf8' );	

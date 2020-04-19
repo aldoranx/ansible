@@ -7,3 +7,8 @@ WP_SITEURL: "https://{{ cloudfront_url }}"
 
 
 
+wordpress_database: mydb
+wordpress_user: aldo
+wordpress_password: password01*
+wordpress_endpoint: terraform-20200419103934539800000001.coo5drxt2wle.us-east-1.rds.amazonaws.com:3306
+cloudfront_url: d1meh89qj2rcns.cloudfront.net
