@@ -45,8 +45,6 @@ define('DB_HOST', '{{ wordpress_endpoint }}');
 define('WP_HOME','https://{{ cloudfront_url }}');
 define('WP_SITEURL','https://{{ cloudfront_url }}');
 
-if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-   $_SERVER['HTTPS']='on';
 
 /** Database Charset to use in creating database tables. */	
 define( 'DB_CHARSET', 'utf8' );	
