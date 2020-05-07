@@ -2,6 +2,5 @@
 
   roles:
     - server
-    - php
     - wordpress
    
