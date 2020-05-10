@@ -8,5 +8,6 @@
     group: www-data
     mode: '0640'
     setype: etc_t
-  notify: restart apache2
-  tags: wordpress
+  notify: 
+  - restart apache2
+ 

@@ -1,6 +1,6 @@
 
-cloudfront_url: d1jd4nfet6mwfv.cloudfront.net
 wordpress_database: mydb
 wordpress_user: aldo
-wordpress_password: password01*
-wordpress_endpoint: terraform-20200507103509181100000001.coo5drxt2wle.us-east-1.rds.amazonaws.com:3306
+wordpress_password: 8XuPOIcL3hTysU99
+wordpress_endpoint: terraform-20200507193107517600000001.coo5drxt2wle.us-east-1.rds.amazonaws.com:3306
+cloudfront_url: d1532ricbcdxgm.cloudfront.net
