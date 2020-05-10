@@ -16,7 +16,7 @@ $_SERVER["HTTPS"] = "on";
  * The wp-config.php creation script uses this file during the	
  * installation. You don't have to use the web site, you can	
  * copy this file to "wp-config.php" and fill in the values.	
- *	
+ **	
  * This file contains the following configurations:	
  *	
  * * MySQL settings	
@@ -45,8 +45,6 @@ define('DB_HOST', '{{ wordpress_endpoint }}');
 define('WP_HOME','https://{{ cloudfront_url }}');
 define('WP_SITEURL','https://{{ cloudfront_url }}');
 
-if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-   $_SERVER['HTTPS']='on';
 
 /** Database Charset to use in creating database tables. */	
 define( 'DB_CHARSET', 'utf8' );	
